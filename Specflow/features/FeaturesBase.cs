@@ -1,19 +1,20 @@
 ﻿using NUnit.Framework;
 using Xamarin.UITest;
 using TechTalk.SpecFlow;
-using SpecFlow;
-using SpecFlow.screens;
+using Specflow;
+using Specflow.Screens;
 
-namespace SpecFlow.features
+namespace Specflow.Features
 {
     [TestFixture(Platform.Android, "")]
-    [TestFixture(Platform.iOS, iPhone5s.OS_8_1)]
-    [TestFixture(Platform.iOS, iPhone5s.OS_8_2)]
-    [TestFixture(Platform.iOS, iPhone5s.OS_8_3)]
+    [TestFixture(Platform.iOS,iPhone8.OS_11_1)]
+    //[TestFixture(Platform.iOS, iPhone5s.OS_8_1)]
+    //[TestFixture(Platform.iOS, iPhone5s.OS_8_2)]
+    //[TestFixture(Platform.iOS, iPhone5s.OS_8_3)]
 
-    [TestFixture(Platform.iOS, iPhone6.OS_8_1)]
-    [TestFixture(Platform.iOS, iPhone6.OS_8_2)]
-    [TestFixture(Platform.iOS, iPhone6.OS_8_3)]
+    //[TestFixture(Platform.iOS, iPhone6.OS_8_1)]
+    //[TestFixture(Platform.iOS, iPhone6.OS_8_2)]
+    //[TestFixture(Platform.iOS, iPhone6.OS_8_3)]
 
     //[TestFixture (Platform.iOS, iPadAir.OS_8_1)]
     //[TestFixture (Platform.iOS, iPadAir.OS_8_2)]
@@ -25,7 +26,7 @@ namespace SpecFlow.features
         protected string iOSSimulator;
         protected bool resetDevice;
 
-        public FeatureBase(Platform platform, string iOSSimulator, bool resetDevice = true)
+        public FeatureBase(Platform platform, string iOSSimulator, bool resetDevice = false)
         {
             this.iOSSimulator = iOSSimulator;
             this.platform = platform;

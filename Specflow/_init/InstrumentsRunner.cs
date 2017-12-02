@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Text;
 
-namespace SpecFlow
+namespace Specflow
 {
     public class InstrumentsRunner
     {

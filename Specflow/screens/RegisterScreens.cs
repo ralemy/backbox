@@ -1,7 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using Xamarin.UITest;
 
-namespace SpecFlow.screens
+namespace Specflow.Screens
 {
     public static class ContextRegister    {
         public static void RegisterScreens(Platform platform){

@@ -1,9 +1,9 @@
 ﻿using TechTalk.SpecFlow;
 using Xamarin.UITest;
-using SpecFlow.screens;
-using SpecFlow;
+using Specflow.Screens;
+using Specflow;
 
-namespace BddWithXamarinUITest
+namespace Specflow.Steps
 {
     public class StepsBase
     {

@@ -1,6 +1,9 @@
 ﻿using System;
-namespace SpecFlow
+namespace Specflow
 {
+    public static class iPhone8{
+        public const string OS_11_1 = "iPhone 8 (11.1)";
+    }
     public static class iPhone4s
     {
         public const string OS_7_1 = "iPhone 4s (7.1 Simulator)";

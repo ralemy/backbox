@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SpecFlow
+namespace Specflow
 {
     public class Simulator
     {

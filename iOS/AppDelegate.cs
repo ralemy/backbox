@@ -13,6 +13,7 @@ namespace associator.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            global::Xamarin.Calabash.Start();
             LoadApplication(new App());
 
 

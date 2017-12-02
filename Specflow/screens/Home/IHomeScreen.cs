@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.UITest.Queries;
 
-namespace SpecFlow.screens
+namespace Specflow.Screens
 {
     public interface IHomeScreen
     {

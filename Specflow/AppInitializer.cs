@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System;
 
-namespace SpecFlow
+namespace Specflow
 {
     public static class AppInitializer
     {
@@ -35,6 +35,7 @@ namespace SpecFlow
 
                 return ConfigureApp
                     .iOS
+                    .PreferIdeSettings()
                     .EnableLocalScreenshots()
                     .DeviceIdentifier(iOSSimulator)
                     .StartApp();
@@ -43,7 +44,7 @@ namespace SpecFlow
             throw new ArgumentException("Unsupported platform");
         }
 
-        static void ResetEmulator()
+        public static void ResetEmulator()
         {
             //TODO : This needs a symlink like sudo ln -s /Users/ralemy/Library/Developer/Xamarin/android-sdk-macosx/platform-tools/adb /opt/adb
             //TODO : Make this work on Windows?
@@ -55,7 +56,7 @@ namespace SpecFlow
             }
         }
 
-        static void ResetSimulator(string iOSSimulator)
+        public static void ResetSimulator(string iOSSimulator)
         {
             if (TestEnvironment.Platform.Equals(TestPlatform.Local))
             {

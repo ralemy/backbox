@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecFlow.Features
+namespace Specflow.Features
 {
     using TechTalk.SpecFlow;
     
@@ -18,8 +18,8 @@ namespace SpecFlow.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("BDD Framework Sanity")]
-    public partial class BDDFrameworkSanityFeature
+    [NUnit.Framework.DescriptionAttribute("Sanity Test")]
+    public partial class SanityTestFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,9 +31,8 @@ namespace SpecFlow.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "BDD Framework Sanity", "    As a developer using BDD techniques\n    I want to have a boilerplate testset\n" +
-                    "    So that I am sure the framework is installed properly\n    And I can use it a" +
-                    "s template for other tests.", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Sanity Test", "\tAs a programmer\n    who needs to develop app in Xamarin using BDD technique\n    " +
+                    "I need a simple test to show that the framework is installed and working", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -67,21 +66,20 @@ namespace SpecFlow.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add two numbers")]
-        [NUnit.Framework.CategoryAttribute("Sanity_BDD")]
+        [NUnit.Framework.CategoryAttribute("Sanity")]
         public virtual void AddTwoNumbers()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", new string[] {
-                        "Sanity_BDD"});
-#line 8
+                        "Sanity"});
+#line 7
 this.ScenarioSetup(scenarioInfo);
+#line 8
+ testRunner.Given("I store 50 into the feature context under key \'sanityTest\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
- testRunner.Given("I have entered 50 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I read the key \'sanityTest\' from the context and add 10 to it and store it in \'sa" +
+                    "nityWhen\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
- testRunner.And("I have entered 70 into the calculator", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 11
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 12
- testRunner.Then("the result should be 120 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the \'sanityWhen\' key in context should be 60.", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
