@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMFramework", "MVVMFramew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Specflow", "Specflow\Specflow.csproj", "{99487173-E3C1-48E2-895A-047630737BE3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{E0CE84D5-C068-40D0-B03A-B186B5E957E6}"
+	ProjectSection(SolutionItems) = preProject
+		xamarin-boilerplate.docx = xamarin-boilerplate.docx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
