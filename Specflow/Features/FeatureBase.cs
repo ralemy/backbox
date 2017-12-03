@@ -6,19 +6,9 @@ using Specflow.Screens;
 
 namespace Specflow.Features
 {
-    [TestFixture(Platform.Android, "")]
-    [TestFixture(Platform.iOS,iPhone8.OS_11_1)]
-    //[TestFixture(Platform.iOS, iPhone5s.OS_8_1)]
-    //[TestFixture(Platform.iOS, iPhone5s.OS_8_2)]
-    //[TestFixture(Platform.iOS, iPhone5s.OS_8_3)]
-
-    //[TestFixture(Platform.iOS, iPhone6.OS_8_1)]
-    //[TestFixture(Platform.iOS, iPhone6.OS_8_2)]
-    //[TestFixture(Platform.iOS, iPhone6.OS_8_3)]
-
-    //[TestFixture (Platform.iOS, iPadAir.OS_8_1)]
-    //[TestFixture (Platform.iOS, iPadAir.OS_8_2)]
-    //[TestFixture (Platform.iOS, iPadAir.OS_8_3)]
+    [TestFixture(Platform.Android, "", true)]
+    [TestFixture(Platform.iOS, iPhone8._11_1, false)]
+//    [TestFixture(Platform.iOS,iPhone8.watch_plus_11_1)]
     public class FeatureBase
     {
         protected static IApp app;

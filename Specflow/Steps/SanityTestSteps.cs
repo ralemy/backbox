@@ -21,7 +21,7 @@ namespace Specflow.Steps
         [Then(@"the '(.*)' key in context should be (.*)\.")]
         public void ThenTheKeyInContextShouldBe_(string sanityWhen0, int p1)
         {
-            FeatureContext.Current.Get<int>(sanityWhen0).ShouldEqual(60);
+            FeatureContext.Current.Get<int>(sanityWhen0).ShouldEqual(p1);
         }
 
     }

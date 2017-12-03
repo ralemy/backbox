@@ -1,6 +1,6 @@
 ﻿using MVVMFramework;
 using Xamarin.Forms;
-using associator.pages;
+using associator.Pages;
 namespace associator
 {
     public partial class App : Application

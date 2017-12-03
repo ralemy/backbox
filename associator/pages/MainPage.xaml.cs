@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using MVVMFramework;
-namespace associator.pages
+namespace associator.Pages
 {
     public partial class MainPage : ContentPage
     {
