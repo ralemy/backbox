@@ -53,7 +53,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>SanityTest.feature.cs</LastGenOutput>
     </None>
-    <None Include="Main.usage.txt" />
+    <None Include="Features\MainPage.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MainPage.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iOS\associator.iOS.csproj">
@@ -86,6 +89,14 @@
     </Compile>
     <Compile Include="Steps\SanityTestSteps.cs" />
     <Compile Include="Features\SanityTestFeature.cs" />
+    <Compile Include="Features\MainPage.feature.cs">
+      <DependentUpon>MainPage.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\MainPageFeature.cs" />
+    <Compile Include="Steps\ShouldBeAbleToStartAssociation.cs" />
+    <Compile Include="Screens\IAssociationScreen.cs" />
+    <Compile Include="Screens\AssociationScreen.cs" />
+    <Compile Include="Steps\ShouldNavigateToAssociationPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

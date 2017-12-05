@@ -28,7 +28,7 @@ namespace Specflow.Features
         {
             app = AppInitializer.StartApp(platform, iOSSimulator, resetDevice);
             FeatureContext.Current.Add("App", app);
-            ContextRegister.RegisterScreens(platform);
+            ContextRegister.RegisterScreens(platform,app);
         }
     }
 

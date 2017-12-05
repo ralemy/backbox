@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="associator.Pages.MainPage">
+<ContentPage AutomationId="TheMainPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="associator.Pages.MainPage">
 	<ContentPage.Content>
         <StackLayout Padding = "30">
-            <Label Text= "Boilerplate app"/>
+            <Button AutomationId="AssociateButton" Text="Associate" Command="{Binding GoForAssociation}"  />
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

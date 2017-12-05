@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage AutomationId="AssociationPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="associator.Pages.AssociationPage">
+	<ContentPage.Content>
+        <StackLayout>
+        <Label AutomationId="AssociationPageLabel" Text="This is the association page"/>
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

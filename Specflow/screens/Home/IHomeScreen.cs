@@ -3,7 +3,7 @@ using Xamarin.UITest.Queries;
 
 namespace Specflow.Screens
 {
-    public interface IHomeScreen
+    public interface IHomeScreen 
     {
         Func<AppQuery, AppQuery> addButton { get; }
     }

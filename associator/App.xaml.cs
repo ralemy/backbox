@@ -17,6 +17,7 @@ namespace associator
         {
             var nav= Initializer.GetDependency<INavigationManager>();
             nav.SetMain(page);
+            nav.Register(AssociationPage.PageKey, typeof(AssociationPage));
             return page;
         }
 
