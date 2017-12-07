@@ -18,8 +18,7 @@ namespace Specflow.Steps
         [When(@"I examine the main page")]
         public void WhenIExamineTheMainPage()
         {
-//            app.Query(c=>c.Marked("TheMainPage")).Length.ShouldBeGreaterThan(0);
-            app.Repl();
+            app.Query(c=>c.Marked("TheMainPage")).Length.ShouldBeGreaterThan(0);
         }
 
         [Then(@"It has a button marked as '(.*)'")]
