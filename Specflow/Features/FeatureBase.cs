@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using Xamarin.UITest;
 using TechTalk.SpecFlow;
 using Specflow;
@@ -30,9 +30,9 @@ namespace Specflow.Features
             FeatureContext.Current.Add("App", app);
             ContextRegister.RegisterScreens(platform,app);
         }
+
         [TearDown]
-        public void AfterEachTest()
-        {
+        public void AfterEachTest(){
             FeatureContext.Current.Clear();
         }
     }
