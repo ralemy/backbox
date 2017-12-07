@@ -15,7 +15,7 @@ namespace Specflow.Steps
         public void GivenIAmInSettingsPage()
         {
             page = FeatureContext.Current.Get<ISettingsScreen>();
-            if(app.Query("SettingsButton").Length > 0)
+            if (app.Query("SettingsButton").Length > 0)
             {
                 app.Tap("SettingsButton");
                 page.WaitForLoad();
@@ -30,8 +30,8 @@ namespace Specflow.Steps
             app.Query(page.UseHttpsSwitch).Length.ShouldEqual(1);
         }
 
-        [Given(@"the '(.*)' Setting is '(.*)'")]
-        public void GivenTheSettingIs(string useHttps, string state)
+        [Given(@"I record the state of the UseHttps Setting")]
+        public void GivenIRecordTheStateOfTheUseHttpsSetting()
         {
             InitialUseHttpsStatus = Invoke("ExamineSettings", "UseHttps");
         }
@@ -43,12 +43,12 @@ namespace Specflow.Steps
 
         }
 
-        [Then(@"the '(.*)' Setting will change to '(.*)'")]
-        public void ThenTheSettingWillChangeTo(string useHttps0, string @false)
+        [Then(@"the UseHttps Setting will toggle")]
+        public void ThenTheUseHttpsSettingWillToggle()
         {
-            app.WaitFor(()=> Invoke("ExamineSettings", "UseHttps")==
+            app.WaitFor(() => Invoke("ExamineSettings", "UseHttps") ==
                         (InitialUseHttpsStatus == "false" ? "true" : "false")
-                        ,"Didn't change the Setting");
+                        , "Didn't change the Setting");
         }
 
     }
