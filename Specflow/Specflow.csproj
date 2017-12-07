@@ -111,6 +111,14 @@
     <Compile Include="Screens\BarcodeScreen.cs" />
     <Compile Include="Steps\ShouldNavigateToBarcodePage.cs" />
     <Compile Include="Steps\ShouldReturntoMainPageIfCancelIsTapped.cs" />
+    <Compile Include="Features\Barcode.feature.cs">
+      <DependentUpon>Barcode.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\BarcodeFeature.cs" />
+    <Compile Include="Screens\IBarcodeScreen.cs" />
+    <Compile Include="Screens\BarcodeScreen.cs" />
+    <Compile Include="Steps\ShouldNavigateToBarcodePage.cs" />
+    <Compile Include="Steps\ShouldReturntoMainPageIfCancelIsTapped.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screens\Association\" />
