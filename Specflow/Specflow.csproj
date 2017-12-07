@@ -94,9 +94,14 @@
     </Compile>
     <Compile Include="Features\MainPageFeature.cs" />
     <Compile Include="Steps\ShouldBeAbleToStartAssociation.cs" />
-    <Compile Include="Screens\IAssociationScreen.cs" />
-    <Compile Include="Screens\AssociationScreen.cs" />
     <Compile Include="Steps\ShouldNavigateToAssociationPage.cs" />
+    <Compile Include="Screens\Association\AssociationScreen.cs" />
+    <Compile Include="Screens\Association\IAssociationScreen.cs" />
+    <Compile Include="Screens\IAppScreen.cs" />
+    <Compile Include="Screens\AppScreen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Screens\Association\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

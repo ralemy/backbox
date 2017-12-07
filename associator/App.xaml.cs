@@ -25,6 +25,7 @@ namespace associator
         {
             Initializer.SetupDI();
             Initializer.Register<MainPageVM>();
+            Initializer.Register<AssociationPage>();
         }
     }
 }

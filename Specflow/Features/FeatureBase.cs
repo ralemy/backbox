@@ -30,6 +30,11 @@ namespace Specflow.Features
             FeatureContext.Current.Add("App", app);
             ContextRegister.RegisterScreens(platform,app);
         }
+        [TearDown]
+        public void AfterEachTest()
+        {
+            FeatureContext.Current.Clear();
+        }
     }
 
 }
