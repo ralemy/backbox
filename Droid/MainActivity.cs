@@ -7,6 +7,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Java.Interop;
 
 namespace associator.Droid
 {
@@ -28,6 +29,24 @@ namespace associator.Droid
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        [Export]
+        public string ExamineSettings(string key)
+        {
+            switch (key)
+            {
+                case "UseHttps":
+                    return Helpers.Settings.UseHttps ? "true" : "false";
+                case "SetHttps":
+                    Helpers.Settings.UseHttps = true;
+                    return "true";
+                case "ClearHttps":
+                    Helpers.Settings.UseHttps = false;
+                    return "false";
+                default:
+                    return "Unknown key " + key;
+            }
         }
     }
 }

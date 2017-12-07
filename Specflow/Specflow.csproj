@@ -57,6 +57,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MainPage.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\SettingsPage.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SettingsPage.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iOS\associator.iOS.csproj">
@@ -94,9 +98,23 @@
     </Compile>
     <Compile Include="Features\MainPageFeature.cs" />
     <Compile Include="Steps\ShouldBeAbleToStartAssociation.cs" />
-    <Compile Include="Screens\IAssociationScreen.cs" />
-    <Compile Include="Screens\AssociationScreen.cs" />
     <Compile Include="Steps\ShouldNavigateToAssociationPage.cs" />
+    <Compile Include="Features\SettingsPage.feature.cs">
+      <DependentUpon>SettingsPage.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\SettingsPageFeature.cs" />
+    <Compile Include="Steps\ShouldNavigateFromMainToSettingsPage.cs" />
+    <Compile Include="Screens\IAppScreen.cs" />
+    <Compile Include="Screens\AppScreen.cs" />
+    <Compile Include="Screens\Associate\AssociationScreen.cs" />
+    <Compile Include="Screens\Associate\IAssociationScreen.cs" />
+    <Compile Include="Screens\Settings\SettingsScreen.cs" />
+    <Compile Include="Screens\Settings\ISettingsScreen.cs" />
+    <Compile Include="Steps\ShouldHaveASwitchToUseHttps.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Screens\Settings\" />
+    <Folder Include="Screens\Associate\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,13 @@ namespace Specflow.Steps
         {
             app = FeatureContext.Current.Get<IApp>("App");
         }
+
+        public string Invoke(string id, string param)
+        {
+            if (app is Xamarin.UITest.Android.AndroidApp)
+                return app.Invoke(id, param).ToString();
+            return app.Invoke(id + ":", param).ToString();
+        }
     }
 
 }
