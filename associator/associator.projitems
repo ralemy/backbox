@@ -20,6 +20,9 @@
       <DependentUpon>AssociationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AssociationPageVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\BarCodeScanPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BarcodePageVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\BarcodeOverlay.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />

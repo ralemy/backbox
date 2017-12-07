@@ -26,6 +26,8 @@ namespace Specflow.Features
         [SetUp]
         public void BeforeEachTest()
         {
+            if (FeatureContext.Current.ContainsKey("App"))
+                return;
             app = AppInitializer.StartApp(platform, iOSSimulator, resetDevice);
             FeatureContext.Current.Add("App", app);
             ContextRegister.RegisterScreens(platform,app);
