@@ -41,7 +41,7 @@ namespace Specflow.Server
         {
             if (!v.StartsWith("/", StringComparison.Ordinal))
                 v = "/" + v;
-            return $"http://localhost:{Port}{v}";
+            return $"http://{GetLocalIP()}:{Port}{v}";
         }
 
         public void Register(Func<IHttpContext, IHttpContext> endpoint, HttpMethod method, string path) => this.Router.Register(endpoint, method, path);

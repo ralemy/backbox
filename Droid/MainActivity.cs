@@ -7,6 +7,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Java.Interop;
+using Newtonsoft.Json.Linq;
 
 namespace associator.Droid
 {
@@ -28,6 +30,20 @@ namespace associator.Droid
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+        [Export]
+        public string SpecflowBackdoor(string json)
+        {
+            JObject command = JObject.Parse(json);
+            switch ((string)command["key"])
+            {
+                case "SetTarget":
+                    Helpers.Settings.TargetURI = (string)command["payload"];
+                    return ("Target Set");
+                default:
+                    return "Unknown key " + (string) command["key"];
+            }
         }
     }
 }

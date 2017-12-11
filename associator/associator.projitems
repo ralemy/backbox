@@ -21,6 +21,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AssociationPageVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Restful\Models\AssociationReport.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />

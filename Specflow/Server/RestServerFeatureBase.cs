@@ -8,14 +8,17 @@ namespace Specflow.Server
     public class RestServerFeatureBase
     {
         protected string Port;
-        protected RestTestServer RestServer;
+        public RestTestServer RestServer;
 
-        public RestServerFeatureBase(string port) => Port = port;
+        public RestServerFeatureBase(string port)
+        {
+            Port = port;
+            RestServer = new RestTestServer(Port);
+        }
 
         [TestFixtureSetUp]
         public void RegisterWithFeatureContext()
         {
-            RestServer = new RestTestServer(Port);
             RestServer.LogToConsole().Start();
         }
         [TestFixtureTearDown]

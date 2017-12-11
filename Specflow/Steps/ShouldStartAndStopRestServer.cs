@@ -1,7 +1,6 @@
 ﻿using Grapevine.Interfaces.Server;
 using Grapevine.Server;
 using Grapevine.Shared;
-using RestSharp;
 using Should;
 using Specflow.Server;
 using TechTalk.SpecFlow;

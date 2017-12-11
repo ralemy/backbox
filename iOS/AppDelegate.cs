@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Newtonsoft.Json.Linq;
 using UIKit;
 
 namespace associator.iOS
@@ -21,6 +22,19 @@ namespace associator.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+        [Export("SpecflowBackdoor:")]
+        public NSString SpecflowBackdoor(NSString json)
+        {
+            JObject command = JObject.Parse(json.ToString());
+            switch ((string)command["key"])
+            {
+                case "SetTarget":
+                    Helpers.Settings.TargetURI = (string)command["payload"];
+                    return new NSString("Target Set");
+                default:
+                    return new NSString("Unknown key " + (string)command["key"]);
+            }
         }
     }
 }

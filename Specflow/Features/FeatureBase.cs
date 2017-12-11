@@ -7,7 +7,7 @@ using Specflow.Screens;
 namespace Specflow.Features
 {
     [TestFixture(Platform.Android, "", true)]
-    [TestFixture(Platform.iOS, iPhone8._11_1, false)]
+    [TestFixture(Platform.iOS, "iPhone 7 (11.2)", false)]
 //    [TestFixture(Platform.iOS,iPhone8.watch_plus_11_1)]
     public class FeatureBase
     {

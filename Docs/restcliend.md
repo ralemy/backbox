@@ -260,13 +260,103 @@ Scenario: Start and Stop Rest server
     }
 ~~~
 
+* The class doesn't need to be a subclass of StepsBase, because there is no mobile app.
 * The RestServer is saved in the FeaturesContext object.
 * There is a Register method that allows an endpoint to be associated with the Server.
 * There is a Get method that allows an endpoint to be called on the server.
 * Same techniques can be used to register other routes (e.g. POST or DELETE), or assing a method to the route instead of a delegate, or implementing POST requests and parametrized calls to the server.
 
+# Testing the communication between App and Server
 
+Start with the Features file, as always:
 
+~~~gherkin
+Feature: Rest Api communication
+    the app needs to be able to consume RESTful apis 
+    in order to send and receive information
+    	
+@rest_api
+Scenario: Should Send data to REST Server
+	Given The REST Server is running
+    And I have added a '/api/connection' endpoint to return 'connection ok' 
+    And I have configured the app for use of REST server endpoint
+	And Am in the main page
+	When I press Send data button
+	Then The server will be called at the endpoint
+~~~
+
+The second part of the feature class is special. it is a FeatureBase that is also a RestServerFeatureBase, but multiple inheritence is not allowed. therefore, it has to basically implement the RestServerFeatureBase
+
+~~~csharp
+public partial class RestApiFeature : FeatureBase
+    {
+        private RestTestServer RestServer;
+
+        public RestApiFeature(Platform p, string iOSSim, bool reset)
+            : base(p, iOSSim, reset)
+        {
+            var Serverbase = new RestServerFeatureBase("3434");
+            RestServer = Serverbase.RestServer;
+        }
+
+        [TestFixtureSetUp]
+        public void StartRestServer()
+        {
+            RestServer.LogToConsole().Start();
+        }
+        [TestFixtureTearDown]
+        public void StopRestServer(){
+            RestServer.Stop();
+        }
+
+        [SetUp]
+        public void AddServerToContext()
+        {
+            FeatureContext.Current.Add("RestTestServer", RestServer);
+        }
+
+        [TearDown]
+        public void RemoveServerFromContext()
+        {
+            FeatureContext.Current.Remove("RestTestServer");
+        }
+    }
+~~~
+
+Note that this file should be edited if the Server is going to listen to any port other than 3434.
+
+The Restserver will be thus running on port 3434 of the local machine, but since the host is set to 0.0.0.0, it will bind to all networks (not just localhost) and will be accessible from Android emulators and iOS simulators. However, the ip address is needed for the devices to communicate with endpoints. The RestTestServer exposes a GetLocalIP() method that implements one way to achieve this:
+
+~~~csharp
+public string GetLocalIP()
+        {
+            string localIP;
+            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+            {
+                socket.Connect("8.8.8.8", 65530);
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                localIP = endPoint.Address.ToString();
+            }
+            return localIP;
+        }
+~~~
+This is not guaranteed to work everywhere, but pretty much does. for a discussion and alternative methods of getting the local IP, one can start from the relevant [Stackflow Discussion](https://stackoverflow.com/questions/6803073/get-local-ip-address). There are also other ways of 
+
+~~~csharp
+        [Export("SpecflowBackdoor:")]
+        public NSString SpecflowBackdoor(NSString json)
+        {
+            JObject command = JObject.Parse(json.ToString());
+            switch ((string)command["key"])
+            {
+                case "SetTarget":
+                    Helpers.Settings.TargetURI = (string)command["payload"];
+                    return new NSString("Target Set");
+                default:
+                    return new NSString("Unknown key " + (string)command["key"]);
+            }
+        }
+~~~
 
 [RestSharp]: https://www.nuget.org/packages/RestSharp
 [Newtonsoft Json]: https://www.newtonsoft.com/json

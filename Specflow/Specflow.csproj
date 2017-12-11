@@ -69,6 +69,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RestServerSanity.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\RestApi.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RestApi.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iOS\associator.iOS.csproj">
@@ -118,6 +122,11 @@
     <Compile Include="Steps\ShouldStartAndStopRestServer.cs" />
     <Compile Include="Features\RestServerSanityFeature.cs" />
     <Compile Include="Server\RestServerFeatureBase.cs" />
+    <Compile Include="Features\RestApi.feature.cs">
+      <DependentUpon>RestApi.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\RestApiFeature.cs" />
+    <Compile Include="Steps\ShouldSendDataToRestServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screens\Association\" />

@@ -3,6 +3,7 @@
 	<ContentPage.Content>
         <StackLayout Padding = "30">
             <Button AutomationId="AssociateButton" Text="Associate" Command="{Binding GoForAssociation}"  />
+            <Button AutomationId="CallApiButton" Text="Call Api" Command="{Binding CallApiCommand}"  />
         </StackLayout>
 	</ContentPage.Content>
 </ContentPage>
