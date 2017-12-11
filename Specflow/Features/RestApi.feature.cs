@@ -65,11 +65,11 @@ namespace Specflow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Should Send data to REST Server")]
+        [NUnit.Framework.DescriptionAttribute("Should Call Api on REST Server")]
         [NUnit.Framework.CategoryAttribute("rest_api")]
-        public virtual void ShouldSendDataToRESTServer()
+        public virtual void ShouldCallApiOnRESTServer()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should Send data to REST Server", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should Call Api on REST Server", new string[] {
                         "rest_api"});
 #line 6
 this.ScenarioSetup(scenarioInfo);

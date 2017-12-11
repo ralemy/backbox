@@ -21,6 +21,11 @@ namespace Specflow.Steps
             return app.Invoke(id + ":", param).ToString();
         }
 
+        public string HostAddress(){
+            if (app is Xamarin.UITest.Android.AndroidApp)
+                return "10.0.2.2";
+            return "localhost";
+        }
 
     }
 

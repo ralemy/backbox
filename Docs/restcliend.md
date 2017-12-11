@@ -325,6 +325,8 @@ public partial class RestApiFeature : FeatureBase
 
 Note that this file should be edited if the Server is going to listen to any port other than 3434.
 
+## Accessing the server from simulators
+
 The Restserver will be thus running on port 3434 of the local machine, but since the host is set to 0.0.0.0, it will bind to all networks (not just localhost) and will be accessible from Android emulators and iOS simulators. However, the ip address is needed for the devices to communicate with endpoints. The RestTestServer exposes a GetLocalIP() method that implements one way to achieve this:
 
 ~~~csharp
@@ -340,7 +342,14 @@ public string GetLocalIP()
             return localIP;
         }
 ~~~
-This is not guaranteed to work everywhere, but pretty much does. for a discussion and alternative methods of getting the local IP, one can start from the relevant [Stackflow Discussion](https://stackoverflow.com/questions/6803073/get-local-ip-address). There are also other ways of 
+This is not guaranteed to work everywhere, but pretty much does. for a discussion and alternative methods of getting the local IP, one can start from the relevant [Stackflow Discussion](https://stackoverflow.com/questions/6803073/get-local-ip-address). 
+
+LocalIP is needed if a physical device is being tested, emulators also work with that but if only emulators are being tested there is a simpler way: Android simulators use 10.0.2.2 for communicating with the host, and iOS just can use local host. in StepsBase class there is a HostAddress() method that returns the appropriate string based on the operating system under test.
+
+# Configuring the app to use the RestTestServer
+
+Usually we would add a Setting parameter for the base and target URL. therefore the most direct solution is to create the global static Settings object and use a backdoor to change it from our tests. 
+here is the example for iOS.
 
 ~~~csharp
         [Export("SpecflowBackdoor:")]
@@ -355,6 +364,40 @@ This is not guaranteed to work everywhere, but pretty much does. for a discussio
                 default:
                     return new NSString("Unknown key " + (string)command["key"]);
             }
+        }
+~~~
+
+Once the app is set, we need to tap the button to call the api and see that the method has been called with HttpMethod.GET. as usual, this would require a button whose command is bound to a RelayCommand in the MainPage ViewModel, running a method that uses [RestSharp][] to call the api. since the delegate for the route will change a class variable, we could wait for this change and ensure that the api has been called.
+
+~~~csharp
+	[Given(@"I have configured the app for use of REST server endpoint")]
+        public void GivenIHaveConfiguredTheAppForUseOfRESTServerEndpoint()
+        {
+            var target = $"http://{HostAddress()}:{RestServer.Port}{restEndpoint}";
+            var command = new JObject(new JProperty("key","SetTarget"),
+                                      new JProperty("payload", target));
+            Invoke("SpecflowBackdoor", command.ToString()).ShouldEqual("Target Set");
+        }
+
+        [Given(@"Am in the main page")]
+        public void GivenAmInTheMainPage()
+        {
+            app.Query(c => c.Marked("TheMainPage")).Length.ShouldBeGreaterThan(0);
+        }
+
+        [When(@"I press Send data button")]
+        public void WhenIPressSendDataButton()
+        {
+            app.Tap(c => c.Marked("CallApiButton"));
+        }
+        [Then(@"The server will be called at the endpoint")]
+        public void ThenTheServerWillBeCalledAtTheEndpoint()
+        {
+            app.WaitFor(
+                () => calledMethod != HttpMethod.ALL,
+                "Didn't Call the endpoint"
+            );
+            calledMethod.ShouldEqual(HttpMethod.GET);
         }
 ~~~
 

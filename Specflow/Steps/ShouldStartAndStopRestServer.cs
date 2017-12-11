@@ -37,7 +37,6 @@ namespace Specflow.Steps
         public void WhenICallTheEndpoint(string p0)
         {
             ScenarioContext.Current.Add("returnvalue", RestServer.Get(p0));
-            RestServer.GetLocalIP().ShouldEqual("ddfdsfsd");
         }
 
 

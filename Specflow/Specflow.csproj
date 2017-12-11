@@ -126,7 +126,7 @@
       <DependentUpon>RestApi.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\RestApiFeature.cs" />
-    <Compile Include="Steps\ShouldSendDataToRestServer.cs" />
+    <Compile Include="Steps\ShouldCallApiOnRestServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screens\Association\" />

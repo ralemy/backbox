@@ -10,7 +10,7 @@ using Xamarin.UITest;
 namespace Specflow.Steps
 {
     [Binding]
-    public class ShouldSendDataToRestServer : StepsBase
+    public class ShouldCallApiOnRestServer : StepsBase
     {
         private RestTestServer RestServer;
         private HttpMethod calledMethod = HttpMethod.ALL;
@@ -37,7 +37,7 @@ namespace Specflow.Steps
         [Given(@"I have configured the app for use of REST server endpoint")]
         public void GivenIHaveConfiguredTheAppForUseOfRESTServerEndpoint()
         {
-            var target = RestServer.GetUrl(restEndpoint);
+            var target = $"http://{HostAddress()}:{RestServer.Port}{restEndpoint}";
             var command = new JObject(new JProperty("key","SetTarget"),
                                       new JProperty("payload", target));
             Invoke("SpecflowBackdoor", command.ToString()).ShouldEqual("Target Set");

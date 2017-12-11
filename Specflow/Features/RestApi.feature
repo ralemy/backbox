@@ -3,7 +3,7 @@
     in order to send and receive information
     	
 @rest_api
-Scenario: Should Send data to REST Server
+Scenario: Should Call Api on REST Server
 	Given The REST Server is running
     And I have added a '/api/connection' endpoint to return 'connection ok' 
     And I have configured the app for use of REST server endpoint
