@@ -20,6 +20,7 @@
       <DependentUpon>AssociationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AssociationPageVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Restful\Models\AssociationReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
@@ -35,5 +36,7 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Restful\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Restful\Models\" />
   </ItemGroup>
 </Project>

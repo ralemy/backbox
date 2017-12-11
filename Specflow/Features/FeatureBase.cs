@@ -33,7 +33,8 @@ namespace Specflow.Features
         [TearDown]
         public void AfterEachTest()
         {
-            FeatureContext.Current.Clear();
+            FeatureContext.Current.Remove("App");
+            ContextRegister.UnregisterScreens(platform, app);
         }
     }
 

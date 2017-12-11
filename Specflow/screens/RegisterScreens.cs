@@ -24,8 +24,14 @@ namespace Specflow.Screens
 
         public static void RegisterScreens(Platform platform, IApp app)
         {
-            FeatureContext.Current.Set<IAssociationScreen>(new AssociationScreen(app));
+            FeatureContext.Current.Add("IAssociationScreen", new AssociationScreen(app));
             RegisterScreens(platform);
+        }
+
+        internal static void UnregisterScreens(Platform platform, IApp app)
+        {
+            FeatureContext.Current.Remove("IAssociationScreen");
+            FeatureContext.Current.Remove(ScreenNames.Home);
         }
     }
 }

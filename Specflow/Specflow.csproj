@@ -39,12 +39,20 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="DocoptNet">
       <HintPath>..\packages\docopt.net.0.6.1.9\lib\net40\DocoptNet.dll</HintPath>
     </Reference>
+    <Reference Include="Grapevine">
+      <HintPath>..\packages\Grapevine.4.1.1.0\lib\net40\Grapevine.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.106.1.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -56,6 +64,10 @@
     <None Include="Features\MainPage.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MainPage.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\RestServerSanity.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RestServerSanity.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -99,9 +111,17 @@
     <Compile Include="Screens\Association\IAssociationScreen.cs" />
     <Compile Include="Screens\IAppScreen.cs" />
     <Compile Include="Screens\AppScreen.cs" />
+    <Compile Include="Server\RestTestServer.cs" />
+    <Compile Include="Features\RestServerSanity.feature.cs">
+      <DependentUpon>RestServerSanity.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\ShouldStartAndStopRestServer.cs" />
+    <Compile Include="Features\RestServerSanityFeature.cs" />
+    <Compile Include="Server\RestServerFeatureBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screens\Association\" />
+    <Folder Include="Server\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

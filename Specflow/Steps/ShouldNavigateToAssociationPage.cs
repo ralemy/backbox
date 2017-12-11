@@ -23,7 +23,7 @@ namespace Specflow.Steps
         [Then(@"I go to the association page")]
         public void ThenIGoToTheAssociationPage()
         {
-            var page = FeatureContext.Current.Get<IAssociationScreen>();
+            var page = FeatureContext.Current.Get<IAssociationScreen>("IAssociationScreen");
             page.WaitForLoad();
             app.Query(page.PageContainer).Length.ShouldBeGreaterThan(0);
         }
